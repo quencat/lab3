@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class WebScraper {
     public static void main(String[] unused){
+        System.out.println(wordCount());
     }
     /**
      * Retrieve contents from a URL and return them as a string.
@@ -11,7 +12,7 @@ public class WebScraper {
      * @param url url to retrieve contents from
      * @return the contents from the url as a string, or an empty string on error
      */
-    public static String urlToString(final String url) {
+  public static String urlToString(final String url) {
         Scanner urlScanner;
         try {
             urlScanner = new Scanner(new URL(url).openStream(), "UTF-8");
@@ -22,11 +23,11 @@ public class WebScraper {
         urlScanner.close();
         return contents;
     }
-    public static void wordCount (String input) {
+  public static int wordCount(String input) {
         int count = 0;
         int indexstart = 0;
         while (indexstart < urlToString(input).length()) {
-            indexstart = urlToString(input). indexOf("Prince", indexstart);
+            indexstart = urlToString(input).toLowerCase(). indexOf("prince", indexstart);
             if (indexstart != -1) {
                 count ++;
                 indexstart += 1;
@@ -34,6 +35,6 @@ public class WebScraper {
                 break;
             }
         }
-        System.out.println(count);
+        return count;
     }
 }
